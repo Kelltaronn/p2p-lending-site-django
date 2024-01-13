@@ -1,5 +1,5 @@
 from Bank_database.form import Szamlaform ,Userform ,CustomUserCreationForm
-from Bank_database.models import Szamla
+from Bank_database.models.Szamla import Szamla
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render,redirect
 
