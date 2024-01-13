@@ -4,9 +4,10 @@ from Bank_database.models.Szamla import Szamla
 
 def is_lender(func):
     def wrapper(*args,**kwargs):
-        if args[0].user.is_authenticated:
-
-            if args[0].user.szamla_tipus == "Lender":
+        if str(args[0].user) != 'AnonymousUser':
+            active_user = args[0].user
+            user_account = Szamla.objects.get(szamla_tulajdonos = active_user)
+            if user_account.szamla_tipus == "Lender":
                 return func(*args,**kwargs)
             else:
                 raise Http404("You are not a Lender")

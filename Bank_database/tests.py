@@ -217,7 +217,6 @@ class TestAddBalance(TestCase):
         #then:
         self.assertTrue("<td>10000.0</td>" in str(reponse.content))
 
-
 class TestLendMoneySite(TestCase):
     def setUp(self) -> None:
         self.client = Client()
@@ -225,7 +224,7 @@ class TestLendMoneySite(TestCase):
         user.set_password("testme")
         user.save()
 
-        szamla = Szamla(aktualis_osszeg=9999, szamla_tulajdonos=user, szamla_tipus="Investor")
+        szamla = Szamla(aktualis_osszeg=9999, szamla_tulajdonos=user, szamla_tipus="Lender")
         szamla.save()
 
 
@@ -246,6 +245,7 @@ class TestLendMoneySite(TestCase):
 
         #Folytatás kövi:
         # log formba
+
 
 
         
