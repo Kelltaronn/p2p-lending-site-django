@@ -1,9 +1,9 @@
 
 from django.shortcuts import redirect
-from Bank_database.models import Szamla
+from Bank_database.models.Szamla import Szamla
 from Bank_database.form import WidthdrawForm
 from django.shortcuts import render
-from Bank_database.models import Tranzakcio
+from Bank_database.models.Tranzakcio import Tranzakcio
 from Bank_database.views.main import main
 
 

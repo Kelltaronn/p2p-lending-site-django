@@ -1,6 +1,6 @@
 from django.shortcuts import redirect
 from django.http import Http404
-from Bank_database.models import Szamla
+from Bank_database.models.Szamla import Szamla
 
 def is_lender(func):
     def wrapper(*args,**kwargs):

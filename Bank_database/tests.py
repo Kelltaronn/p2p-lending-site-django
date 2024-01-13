@@ -1,7 +1,8 @@
 from django.test import TestCase, Client
 from django.contrib.auth.models import User
 from django.urls import reverse
-from Bank_database.models import Szamla , Kerelem
+from Bank_database.models.Szamla import Szamla
+from Bank_database.models.Kerelem import  Kerelem
 from urllib.parse import urlencode
 
 

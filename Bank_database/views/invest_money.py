@@ -1,5 +1,6 @@
 from Bank_database.decorators import is_investor
-from Bank_database.models import Szamla, Kerelem
+from Bank_database.models.Szamla import Szamla
+from Bank_database.models.Kerelem import Kerelem
 from Bank_database.form import InvestMoneyForm
 from django.shortcuts import render,redirect
 

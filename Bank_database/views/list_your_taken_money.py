@@ -1,5 +1,5 @@
 from Bank_database.decorators import is_lender
-from Bank_database.models import  Kerelem
+from Bank_database.models.Kerelem import  Kerelem
 from django.shortcuts import render
 
 @is_lender

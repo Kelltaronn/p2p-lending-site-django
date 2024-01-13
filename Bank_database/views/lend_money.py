@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from Bank_database.form import  LendMoneyForm
-from Bank_database.models import Szamla
+from Bank_database.models.Szamla import Szamla
 from Bank_database.decorators import is_lender
 
 

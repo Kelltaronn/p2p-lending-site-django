@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render
-from Bank_database.models import Szamla
+from Bank_database.models.Szamla import Szamla
 
 def main(request):
 

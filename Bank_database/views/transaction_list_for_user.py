@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from Bank_database.models import Szamla,Tranzakcio
+from Bank_database.models.Szamla import Szamla
+from Bank_database.models.Tranzakcio import Tranzakcio
 
 def transaction_list_for_user(request):
     active_user = request.user

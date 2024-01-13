@@ -1,6 +1,7 @@
 from Bank_database.decorators import is_investor
 from django.shortcuts import render
-from Bank_database.models import Szamla , Befektetes
+from Bank_database.models.Szamla import Szamla 
+from Bank_database.models.Befektetes import  Befektetes
 
 from Bank_database.views.builder import context_builder
 

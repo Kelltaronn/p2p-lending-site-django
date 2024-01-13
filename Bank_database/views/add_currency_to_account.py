@@ -1,5 +1,5 @@
 from Bank_database.views.main import main
-from Bank_database.models import Szamla
+from Bank_database.models.Szamla import Szamla
 from Bank_database.form import  TransactionForm
 from django.shortcuts import render
 
