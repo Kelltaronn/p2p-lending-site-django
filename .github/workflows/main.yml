@@ -1,6 +1,9 @@
 #Server config file:
 name: test_Django
+#On is used what will activate the whole process
 on: [pull_request, push] # activates the workflow when there is a push or pull request in the repo
+
+# Processes in the jobs.
 jobs:
   test_project:
     runs-on: ubuntu-latest # operating system your code will run on
