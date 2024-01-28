@@ -1,7 +1,11 @@
 #Server config file:
 name: test_Django
 #On is used what will activate the whole process
-on: [pull_request, push] # activates the workflow when there is a push or pull request in the repo
+# activates the workflow when there is a push or pull request in the repo
+on: 
+  pull_request:
+    branches:
+      - main 
 
 # Processes in the jobs.
 jobs:
