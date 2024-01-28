@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path ,re_path
 from django.urls import path, include
 from Bank_database.views.main import main
 from Bank_database.views.add_currency_to_account import add_currency_to_account
@@ -28,6 +28,7 @@ from Bank_database.views.my_investments import my_investments
 from Bank_database.views.register import register
 from Bank_database.views.transaction_list_for_user import transaction_list_for_user
 from Bank_database.views.withdraw_currency_from_account import withdraw_currency_from_account
+from django.contrib.staticfiles import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -43,7 +44,10 @@ urlpatterns = [
     path('my-investments/',my_investments, name='my_investments'),
     path('invest_money/<int:id>/',invest_money,name='invest_money'),
     path('widthdrawn/', withdraw_currency_from_account, name="widthdrawn"),
-    path('transaction_list/',transaction_list_for_user, name="transaction_list")
+    path('transaction_list/',transaction_list_for_user, name="transaction_list"),
+    # It makes a new secondary server for a static files.
+    re_path(r"^static/(?P<path>.*)$", views.serve),
+    
 ]
 #Error Handling with 404
 handler404 = "Bank_database.views.error_404.error_404"
