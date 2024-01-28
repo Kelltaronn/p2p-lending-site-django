@@ -180,7 +180,7 @@ class TestMainPage(TestCase):
         response = self.client.get(reverse("main_page"))
         #then:
         self.assertTrue("<td>testjani</td>" in str(response.content))
-        self.assertTrue("<td>8999.0</td>" in str(response.content))
+        self.assertTrue("<td>9999.0</td>" in str(response.content))
         self.assertTrue("<td>Investor</td>" in str(response.content))
 
 
