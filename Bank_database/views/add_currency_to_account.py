@@ -7,6 +7,7 @@ import os
 from dotenv import load_dotenv
 #Stripe connection setting up:
 stripe.api_key = os.getenv('STRIPE_API_KEY') or os.environ.get('STRIPE_API_KEY')
+domain_host= os.getenv('DJANGO_DOMAIN') or os.environ.get('DJANGO_DOMAIN')
 
 
 
@@ -55,8 +56,8 @@ def add_currency_to_account(request):
                 },
             ],
             mode='payment',
-            success_url= 'http://localhost:8000/add_to_balance_success/{0}/'.format(new_transaction.id),
-            cancel_url= 'http://localhost:8000/add_to_balance_unsuccess/',
+            success_url= '{1}add_to_balance_success/{0}/'.format(new_transaction.id,domain_host),
+            cancel_url= '{0}add_to_balance_unsuccess/'.format(domain_host),
         )
         return redirect(checkout_session.url)
 
