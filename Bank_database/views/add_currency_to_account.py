@@ -1,7 +1,13 @@
 from Bank_database.views.main import main
 from Bank_database.models.Szamla import Szamla
 from Bank_database.form import  TransactionForm
-from django.shortcuts import render
+from django.shortcuts import render ,redirect
+import stripe
+import os
+from dotenv import load_dotenv
+#Stripe connection setting up:
+stripe.api_key = os.getenv('STRIPE_API_KEY')
+
 
 
 
@@ -19,6 +25,7 @@ def add_currency_to_account(request):
         context = {"added_currency": currency_form}
         return render(request,"add_to_balance.html",context)
     
+    '''
     if request.method == "POST":
         user = request.user.id
         transaction = TransactionForm(request.POST)
@@ -30,3 +37,29 @@ def add_currency_to_account(request):
         account_data.save()
         context = {}
         return main(request)
+    '''
+    #This will be directed to Stripe:
+    if request.method == 'POST':
+        df = stripe.Price.create(
+                    currency="EUR",
+                    unit_amount= (100 * int(request.POST['osszeg'])), #The price is multiplied by 100.
+                    product='prod_Pa0CGCrydM2nkn')
+        transaction = TransactionForm(request.POST)
+        new_transaction = transaction.save()
+        checkout_session = stripe.checkout.Session.create(
+            line_items=[
+                {
+                    # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
+                    'price': df['id'],
+                    'quantity': 1,
+                },
+            ],
+            mode='payment',
+            success_url= 'http://localhost:8000/add_to_balance_success/{0}/'.format(new_transaction.id),
+            cancel_url= 'http://localhost:8000/add_to_balance_unsuccess/',
+        )
+        return redirect(checkout_session.url)
+
+    
+        
+        

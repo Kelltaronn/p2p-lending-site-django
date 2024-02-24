@@ -7,7 +7,8 @@ class Tranzakcio(models.Model):
     datatime = models.DateTimeField(auto_now_add=True , null=True, blank=True) #
     osszeg = models.FloatField()
     tranzakcio_fajta = models.CharField(max_length=255)
+    activated = models.BooleanField(default = True)
 
 
     def __str__(self) -> str:
-        return self.szamla_id 
+        return str(self.szamla_id)

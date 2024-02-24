@@ -28,6 +28,8 @@ from Bank_database.views.my_investments import my_investments
 from Bank_database.views.register import register
 from Bank_database.views.transaction_list_for_user import transaction_list_for_user
 from Bank_database.views.withdraw_currency_from_account import withdraw_currency_from_account
+from Bank_database.views.add_to_balance_success import add_to_balance_success
+from Bank_database.views.add_to_balance_unsuccess import add_to_balance_unsuccess
 from django.contrib.staticfiles import views
 
 urlpatterns = [
@@ -45,8 +47,11 @@ urlpatterns = [
     path('invest_money/<int:id>/',invest_money,name='invest_money'),
     path('widthdrawn/', withdraw_currency_from_account, name="widthdrawn"),
     path('transaction_list/',transaction_list_for_user, name="transaction_list"),
+    path('add_to_balance_success/<int:id>/',add_to_balance_success, name='add_to_balance_success'),
+    path('add_to_balance_unsuccess/',add_to_balance_unsuccess, name='add_to_balance_unsuccess'),
     # It makes a new secondary server for a static files.
     re_path(r"^static/(?P<path>.*)$", views.serve),
+    
     
 ]
 #Error Handling with 404
