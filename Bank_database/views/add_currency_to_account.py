@@ -6,7 +6,7 @@ import stripe
 import os
 from dotenv import load_dotenv
 #Stripe connection setting up:
-stripe.api_key = os.getenv('STRIPE_API_KEY')
+stripe.api_key = os.getenv('STRIPE_API_KEY') or os.environ.get('STRIPE_API_KEY')
 
 
 
