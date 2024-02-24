@@ -40,3 +40,4 @@ six==1.16.0
 sqlparse==0.4.4
 urllib3==2.0.3
 python-dotenv==1.0.0
+stripe==8.0.0
